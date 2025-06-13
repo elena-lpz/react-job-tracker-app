@@ -33,10 +33,10 @@ export default function AddJobModal({ setAddModal }) {
   return (
     <div
       onClick={() => setAddModal(false)}
-      className="fixed top-0 left-0 w-full h-full bg-black/70 flex justify-center items-center"
+      className="fixed top-0 left-0 w-full h-full bg-black/70 flex justify-center items-center z-50"
     >
       <div
-        className="bg-white p-6 rounded-lg h-100 overflow-scroll"
+        className="bg-white p-6 rounded-lg shadow-lg w-[90%] max-w-lg max-h-[90vh] overflow-y-auto"
         // stops modal from closing when clicking on it
         onClick={(e) => e.stopPropagation()}
       >

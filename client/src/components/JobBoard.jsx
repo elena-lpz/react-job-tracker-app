@@ -35,14 +35,14 @@ export default function JobBoard() {
   });
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col min-h-screen">
       <div className="p-4">
         <button onClick={() => setAddModal(true)}>Add New Job</button>
       </div>
 
-      <div className="flex divide-x divide-gray-300">
+      <div className="flex flex-1 overflow-x-auto divide-x divide-gray-300">
         {columns.map((column) => (
-          <div key={column.status} className="">
+          <div key={column.status} className="flex-1 min-w-[250px] p-2">
             <h2 className="text-3xl p-2 capitalize font-bold text-gray-500">
               {column.status}
             </h2>
