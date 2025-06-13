@@ -1,9 +1,10 @@
 import "./App.css";
+import JobBoard from "./components/JobBoard";
 
 export default function App() {
   return (
     <>
-      <h1>My App</h1>
+      <JobBoard />
     </>
   );
 }
