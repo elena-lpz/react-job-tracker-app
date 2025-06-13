@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
 import JobCard from "./JobCard";
 import { statuses } from "../utils/status";
+import JobModal from "./JobModal";
 
 export default function JobBoard() {
   const [JobsData, setJobsData] = useState([]);
+  const [modal, setModal] = useState(false);
+  const [selectedJob, setSelectedJob] = useState(null);
 
   //manage effect
   useEffect(() => {
@@ -36,16 +39,39 @@ export default function JobBoard() {
             {column.status}
           </h2>
           {column.jobs.map((job) => (
-            <JobCard
+            <div
               key={job.id}
-              jobTitle={job.job_title}
-              companyName={job.company_name}
-              location={job.location}
-              status={job.status}
-            />
+              onClick={() => {
+                setSelectedJob(job);
+                setModal(true);
+              }}
+            >
+              <JobCard
+                jobTitle={job.job_title}
+                companyName={job.company_name}
+                location={job.location}
+                status={job.status}
+              />
+            </div>
           ))}
         </div>
       ))}
+
+      {/* only render modal when modal is open (true) and we have a job selected (selectedJob) */}
+      {/* open modal with selectedJob info */}
+      {modal && selectedJob ? (
+        <JobModal
+          jobTitle={selectedJob.job_title}
+          companyName={selectedJob.company_name}
+          location={selectedJob.location}
+          salary={selectedJob.salary}
+          job_description={selectedJob.job_description}
+          link={selectedJob.link}
+          date_applied={selectedJob.date_applied}
+          application_status={selectedJob.application_status}
+          setModal={setModal}
+        />
+      ) : null}
     </div>
   );
 }
