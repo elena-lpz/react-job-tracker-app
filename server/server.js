@@ -35,7 +35,7 @@ app.get("/jobs", async (req, res) => {
 
 // I want to CREATE new data in my db
 
-app.post("/addJob", (req, res) => {
+app.post("/addJob", async (req, res) => {
   const body = req.body;
   //   destructured version of the body
   const {
@@ -49,7 +49,7 @@ app.post("/addJob", (req, res) => {
     application_status,
   } = req.body;
   try {
-    const insert = db.query(
+    const insert = await db.query(
       `INSERT INTO jobs (job_title,
   company_name,
   location,
@@ -67,6 +67,58 @@ app.post("/addJob", (req, res) => {
         link,
         date_applied,
         application_status,
+      ]
+    );
+    res.status(200).json({ success: true });
+  } catch (error) {
+    console.log("Oops, something went wrong.");
+    res.status(500).json({ success: false });
+  }
+});
+
+// I want to DELETE data from db
+
+app.delete("/deleteJob/:id", async (req, res) => {
+  const jobId = req.params.id;
+  try {
+    console.log(jobId);
+    const deleteJob = await db.query(`DELETE FROM jobs WHERE id = $1`, [jobId]);
+    if (!jobId) {
+      console.log("ID doesn't exist");
+    }
+    res.status(200).json({ success: true });
+  } catch (error) {
+    console.log("Oops, something went wrong.");
+    res.status(500).json({ success: false });
+  }
+});
+
+// I want to UPDATE data in my db
+// Setting this up now though I might not use it as it's not part of my MVP
+
+app.put("/updateJob/:id", (req, res) => {
+  const jobBody = req.body; // for the updated job data
+  const jobId = req.params.id; // to target the correct job
+  try {
+    const updateJob = db.query(
+      `UPDATE jobs SET job_title = $1,
+        company_name = $2,
+        location = $3,
+        salary = $4,
+        job_description = $5,
+        link = $6,
+        date_applied = $7,
+        application_status = $8 WHERE id = $9`,
+      [
+        jobBody.job_title,
+        jobBody.company_name,
+        jobBody.location,
+        jobBody.salary,
+        jobBody.job_description,
+        jobBody.link,
+        jobBody.date_applied,
+        jobBody.application_status,
+        jobId,
       ]
     );
     res.status(200).json({ success: true });
