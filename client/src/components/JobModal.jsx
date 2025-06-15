@@ -14,7 +14,10 @@ const JobModal = ({
       onClick={() => setModal(false)}
       className="fixed top-0 left-0 w-full h-full bg-black/70 flex justify-center items-center"
     >
-      <div className="bg-white p-6 rounded-lg shadow-lg w-2/3">
+      <div
+        className="bg-white p-6 rounded-lg shadow-lg w-2/3"
+        onClick={(e) => e.stopPropagation()}
+      >
         <h2 className="text-2xl font-bold mb-4">{jobTitle}</h2>
         <div className="space-y-2">
           <div>

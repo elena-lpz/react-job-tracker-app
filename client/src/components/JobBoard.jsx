@@ -14,17 +14,26 @@ export default function JobBoard() {
   //manage effect
 
   useEffect(() => {
-    async function getJobs() {
-      const response = await fetch(
-        "https://react-job-tracker-app.onrender.com/jobs"
-      );
-
-      const data = await response.json();
-      //console.log(data);
-      setJobsData(data);
-    }
     getJobs();
   }, []);
+
+  //fetch jobs
+  async function getJobs() {
+    const response = await fetch(
+      "https://react-job-tracker-app.onrender.com/jobs"
+    );
+    const data = await response.json();
+    //console.log(data);
+    setJobsData(data);
+  }
+
+  //delete jobs
+  async function handleDelete(jobId) {
+    await fetch(`http://localhost:8080/deleteJob/${jobId}`, {
+      method: "DELETE",
+    });
+    await getJobs();
+  }
 
   // filter jobs by status
   const columns = statuses.map((status) => {
@@ -38,9 +47,11 @@ export default function JobBoard() {
   });
 
   return (
-    <main className="mx-8 mt-8 flex flex-col min-h-screen">
-      <div className="flex justify-between">
-        <h1 className="px-2 text-2xl font-semibold">Your job board</h1>
+    <main className=" mx-2 md:mx-8 mt-8 flex flex-col min-h-screen">
+      <div className="p-1 flex justify-between items-center">
+        <h1 className="px-2 text-xl md:text-2xl font-semibold">
+          Your job board
+        </h1>
         <button onClick={() => setAddModal(true)}>Add New Job</button>
       </div>
 
@@ -57,18 +68,17 @@ export default function JobBoard() {
               {column.status}
             </h2>
             {column.jobs.map((job) => (
-              <div
-                key={job.id}
-                onClick={() => {
-                  setSelectedJob(job);
-                  setModal(true);
-                }}
-              >
+              <div key={job.id}>
                 <JobCard
                   jobTitle={job.job_title}
                   companyName={job.company_name}
                   location={job.location}
                   status={job.status}
+                  onClick={() => {
+                    setSelectedJob(job);
+                    setModal(true);
+                  }}
+                  onDelete={() => handleDelete(job.id)}
                 />
               </div>
             ))}

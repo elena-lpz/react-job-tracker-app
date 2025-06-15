@@ -1,40 +1,42 @@
 export default function Dashboard() {
   return (
-    <main className="mx-8 mt-8 flex flex-col min-h-screen">
+    <main className="mx-3 md:mx-8 mt-8 flex flex-col min-h-screen">
       <h1 className="px-2 text-2xl font-semibold">Welcome back!</h1>
 
       {/* quick summary  */}
-
-      <div className="mt-6 grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div className="mt-6 grid grid-cols-1 md:grid-cols-4 gap-3 md:gap-6">
         <div className="bg-white shadow-sm p-6 rounded-3xl flex-column items-center">
-          <p className="text-xl font-semibold max-w-min rounded-xl px-4 py-2 bg-[var(--pink-accent)] mb-3">
+          <p className="text-md md:text-xl font-semibold max-w-min rounded-xl px-4 py-2 bg-[var(--pink-accent)] mb-3">
             {1}
           </p>
-          <p className="text-xl text-gray-500 ">Total applications</p>
+          <p className="text-lg md:text-xl text-gray-500 ">
+            Total applications
+          </p>
         </div>
 
         <div className="bg-white shadow-sm p-6 rounded-3xl flex-column items-center">
-          <p className="text-xl font-semibold max-w-min rounded-xl px-4 py-2 bg-[var(--yellow-accent)] mb-3">
+          <p className="text-md md:text-xl font-semibold max-w-min rounded-xl px-4 py-2 bg-[var(--yellow-accent)] mb-3">
             {1}
           </p>
-          <p className="text-xl text-gray-500 ">Upcoming Interviews</p>
+          <p className="text-lg md:text-xl text-gray-500 ">
+            Upcoming Interviews
+          </p>
         </div>
 
         <div className="bg-white shadow-sm p-6 rounded-3xl flex-column items-center">
-          <p className="text-xl font-semibold max-w-min rounded-xl px-4 py-2 bg-[var(--green-accent)] mb-3">
+          <p className="text-md md:text-xl font-semibold max-w-min rounded-xl px-4 py-2 bg-[var(--green-accent)] mb-3">
             {1}
           </p>
-          <p className="text-xl text-gray-500 ">Offers</p>
+          <p className="text-lg md:text-xl text-gray-500 ">Offers</p>
         </div>
 
         <div className="bg-white shadow-sm p-6 rounded-3xl flex-column items-center">
-          <p className="text-xl font-semibold max-w-min rounded-xl px-4 py-2 bg-[var(--purple-accent)] mb-3">
+          <p className="text-md md:text-xl font-semibold max-w-min rounded-xl px-4 py-2 bg-[var(--purple-accent)] mb-3">
             {1}
           </p>
-          <p className="text-xl text-gray-500 ">Rejections</p>
+          <p className="text-lg md:text-xl text-gray-500 ">Rejections</p>
         </div>
       </div>
-
       <div className="mt-6">
         <h1 className="px-2 text-2xl font-semibold">
           Jobs matching your criteria
@@ -53,7 +55,7 @@ export default function Dashboard() {
               <button className="max-h-min">Apply</button>
             </div>
 
-            <p className="text-md text-gray-400 ">
+            <p className="mt-2 text-md text-gray-400 ">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque
               dolore modi, molestiae, ad quasi officiis saepe error laudantium
               facere perspiciatis mollitia veritatis quisquam porro aut hic
@@ -76,7 +78,7 @@ export default function Dashboard() {
               <button className="max-h-min">Apply</button>
             </div>
 
-            <p className="text-md text-gray-400 ">
+            <p className="mt-2text-md text-gray-400 ">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque
               dolore modi, molestiae, ad quasi officiis saepe error laudantium
               facere perspiciatis mollitia veritatis quisquam porro aut hic
@@ -99,7 +101,7 @@ export default function Dashboard() {
               <button className="max-h-min">Apply</button>
             </div>
 
-            <p className="text-md text-gray-400 ">
+            <p className="mt-2 text-md text-gray-400 ">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque
               dolore modi, molestiae, ad quasi officiis saepe error laudantium
               facere perspiciatis mollitia veritatis quisquam porro aut hic
@@ -122,7 +124,7 @@ export default function Dashboard() {
               <button className="max-h-min">Apply</button>
             </div>
 
-            <p className=" text-md text-gray-400 ">
+            <p className="mt-2 text-md text-gray-400 ">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque
               dolore modi, molestiae, ad quasi officiis saepe error laudantium
               facere perspiciatis mollitia veritatis quisquam porro aut hic
