@@ -20,7 +20,7 @@ export default function AddJobModal({ setAddModal }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await fetch("http://localhost:8080/addJob", {
+    await fetch("https://react-job-tracker-app.onrender.com/addJob", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),

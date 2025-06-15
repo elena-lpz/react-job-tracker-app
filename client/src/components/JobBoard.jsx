@@ -29,9 +29,12 @@ export default function JobBoard() {
 
   //delete jobs
   async function handleDelete(jobId) {
-    await fetch(`http://localhost:8080/deleteJob/${jobId}`, {
-      method: "DELETE",
-    });
+    await fetch(
+      `https://react-job-tracker-app.onrender.com/deleteJob/${jobId}`,
+      {
+        method: "DELETE",
+      }
+    );
     await getJobs();
   }
 
