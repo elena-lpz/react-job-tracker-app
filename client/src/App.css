@@ -5,5 +5,26 @@
   padding: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
-  font-family: "Nunito Sans", sans-serif;
+  background-color: var(--color-gray-100);
+  font-family: "Familjen Grotesk", sans-serif;
+
+  /* colour variables  */
+
+  --pink-accent: #ffcade;
+  --blue-accent: #a7c8f5;
+  --yellow-accent: #ffe072;
+  --green-accent: #c1ff9b;
+  --purple-accent: #c0a5ff;
+}
+
+button {
+  background-color: var(--color-gray-950);
+  color: white;
+  padding: 0.5rem 2rem;
+  border-radius: 2rem;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: var(--color-gray-800);
 }

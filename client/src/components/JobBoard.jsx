@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import JobCard from "./JobCard";
 import { statuses } from "../utils/status";
+import { titleColours } from "../utils/colours";
 import JobModal from "./JobModal";
 import AddJobModal from "./AddJobModal";
 
@@ -14,23 +15,15 @@ export default function JobBoard() {
 
   useEffect(() => {
     async function getJobs() {
-      try {
-        const response = await fetch("http://localhost:8080/jobs");
+      const response = await fetch(
+        "https://react-job-tracker-app.onrender.com/jobs"
+      );
 
-        const data = await response.json();
-        if (data.success) {
-          setJobsData(data);
-          //console.log(data);
-        }
-      } catch (error) {
-        console.error(error.message);
-      }
+      const data = await response.json();
+      //console.log(data);
+      setJobsData(data);
     }
     getJobs();
-
-    //interval to poll the API
-    const jobsInterval = setInterval(getJobs, 5000);
-    return () => clearInterval(jobsInterval);
   }, []);
 
   // filter jobs by status
@@ -45,18 +38,22 @@ export default function JobBoard() {
   });
 
   return (
-    <div className="mx-4 flex flex-col min-h-screen">
-      <div className="p-4">
+    <main className="mx-8 mt-8 flex flex-col min-h-screen">
+      <div className="flex justify-between">
+        <h1 className="px-2 text-2xl font-semibold">Your job board</h1>
         <button onClick={() => setAddModal(true)}>Add New Job</button>
       </div>
 
-      <div className="flex flex-wrap md:flex-nowrap overflow-x-auto md:divide-x md:divide-gray-300">
+      <div className="mt-4 flex flex-wrap md:flex-nowrap overflow-x-auto md:divide-x md:divide-gray-200">
         {columns.map((column) => (
           <div
             key={column.status}
             className="flex-shrink-0 w-full md:w-1/5  min-w-[15vw] p-2"
           >
-            <h2 className="text-2xl p-2 capitalize font-bold text-gray-500">
+            <h2
+              className="text-xl rounded-2xl px-6 py-3 mb-6 capitalize font-bold text-gray-800"
+              style={{ backgroundColor: titleColours[column.status] }}
+            >
               {column.status}
             </h2>
             {column.jobs.map((job) => (
@@ -98,6 +95,6 @@ export default function JobBoard() {
       {/* only render modal when addModal is open (true) */}
       {/* open AddJobModal  */}
       {addModal ? <AddJobModal setAddModal={setAddModal} /> : null}
-    </div>
+    </main>
   );
 }
