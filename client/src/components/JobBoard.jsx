@@ -14,13 +14,23 @@ export default function JobBoard() {
 
   useEffect(() => {
     async function getJobs() {
-      const response = await fetch("http://localhost:8080/jobs");
+      try {
+        const response = await fetch("http://localhost:8080/jobs");
 
-      const data = await response.json();
-      //console.log(data);
-      setJobsData(data);
+        const data = await response.json();
+        if (data.success) {
+          setJobsData(data);
+          //console.log(data);
+        }
+      } catch (error) {
+        console.error(error.message);
+      }
     }
     getJobs();
+
+    //interval to poll the API
+    const jobsInterval = setInterval(getJobs, 5000);
+    return () => clearInterval(jobsInterval);
   }, []);
 
   // filter jobs by status
