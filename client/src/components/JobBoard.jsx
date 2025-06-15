@@ -62,10 +62,10 @@ export default function JobBoard() {
         {columns.map((column) => (
           <div
             key={column.status}
-            className="flex-shrink-0 w-full md:w-1/5  min-w-[15vw] p-2"
+            className="flex-shrink-0 w-full md:w-1/5  min-w-[15vw] p-2 pb-6"
           >
             <h2
-              className="text-xl rounded-2xl px-6 py-3 mb-6 capitalize font-bold text-gray-800"
+              className="text-lg md:text-xl rounded-2xl px-6 py-3 mb-3 md:mb-6 capitalize font-bold text-gray-800"
               style={{ backgroundColor: titleColours[column.status] }}
             >
               {column.status}
