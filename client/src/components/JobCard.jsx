@@ -17,7 +17,7 @@ const JobCard = ({ jobTitle, companyName, location, onClick, onDelete }) => {
           }}
         />
       </div>
-      <div className="flex flex-col sm:flex-row justify-between text-gray-700 text-sm ">
+      <div className="flex flex-row justify-between text-gray-700 text-sm ">
         <div className=" font-medium">{companyName} </div>
         <div className="flex justify-between gap-1 items-center">
           <IconMapPin size={16} color="grey" />
