@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function AddJobModal({ setAddModal }) {
+export default function AddJobModal({ setAddModal, refreshJobs }) {
   const [formData, setFormData] = useState({
     job_title: "",
     company_name: "",
@@ -26,7 +26,7 @@ export default function AddJobModal({ setAddModal }) {
       body: JSON.stringify(formData),
     });
     //close modal after submit
-    //TODO need to to rerender data too...(interval?)
+    refreshJobs();
     setAddModal(false);
   };
 

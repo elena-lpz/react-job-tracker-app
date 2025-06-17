@@ -107,7 +107,9 @@ export default function JobBoard() {
 
       {/* only render modal when addModal is open (true) */}
       {/* open AddJobModal  */}
-      {addModal ? <AddJobModal setAddModal={setAddModal} /> : null}
+      {addModal ? (
+        <AddJobModal setAddModal={setAddModal} refreshJobs={getJobs} />
+      ) : null}
     </main>
   );
 }
